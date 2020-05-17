@@ -2,17 +2,6 @@ import React, {Component} from 'react';
 import './Login.css'
 import logo from '../../pic/TUlogo.png'
 
-
-export default class Login extends Component{
-    render(){
-        return(
-            <div className = "Login">
-                <LoginComponent></LoginComponent>
-            </div>
-        )
-    }
-}
-
 class LoginComponent extends Component{
     render(){
         return(
@@ -29,3 +18,5 @@ class LoginComponent extends Component{
         )
     }
 }
+
+export default LoginComponent
