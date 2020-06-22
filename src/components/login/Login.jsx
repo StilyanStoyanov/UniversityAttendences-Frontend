@@ -73,7 +73,6 @@ class LoginComponent extends Component{
         )
         .then(response => 
             {
-                console.log(response)
                 let userId = response.data.id
                 if(response.data.role === "STUDENT"){
                     this.props.history.push(`/student/${userId}`)
@@ -84,7 +83,6 @@ class LoginComponent extends Component{
             }
         )
         .catch(error => {
-
                 this.setState(
                     {
                         exception: error.response.data.message

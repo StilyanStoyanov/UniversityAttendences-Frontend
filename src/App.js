@@ -3,6 +3,7 @@ import './App.css';
 import LoginComponent from './components/login/Login'
 import ErrorComponent from './components/error/Error'
 import ProfessorComponent from './components/professor/ProfessorComponent';
+import ProfessorListComponent from './components/professor/ProfessorComponent';
 import StudentComponent from './components/student/StudentComponent';
 import {
   BrowserRouter as Router,
@@ -17,9 +18,11 @@ function App() {
       <Router>
           <Switch>
               <Route exact path="/" component={LoginComponent} />
-              <Route path="/login" component={LoginComponent} />
-              <Route path="/professor/:id" component={ProfessorComponent} />
-              <Route path="/student/:id" component={StudentComponent} />
+              <Route exact path="/login" component={LoginComponent} />
+              <Route exact path="/professor/:id" component={ProfessorComponent} />
+              <Route exact path="/student/:id" component={StudentComponent} />
+              <Route exact path="/student/:id/professors" component={ProfessorListComponent}/>
+              <Route exact path="/student/:id/all/professors" component={ProfessorListComponent}/>
               <Route component={ErrorComponent} />
           </Switch>
       </Router>
