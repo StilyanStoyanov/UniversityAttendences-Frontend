@@ -6,10 +6,11 @@ class ProfessorService {
     }
 
     getProffesorsBySpecialtyId(specialtyId, semester){
-        return axios.get(`http://localhost:8081/professor`, null, { params: {
-            specialtyId,
-            semester
-          }})
+        return axios.get(`http://localhost:8081/professor?specialtyId=${specialtyId}&semester=${semester}`)
+    }
+
+    getAllProfessors(specialtyId, semester){
+        return axios.get('http://localhost:8081/professor/all')
     }
 }
 

@@ -4,9 +4,10 @@ class StudentInformationComponent extends Component {
 
     render(){
         return(
-                <div className="row">
-                    <div className = "table-responsive col-md-6">
-                        <table className = "table">
+            <div className="row">
+                <div className = "table-responsive col-md-6">
+                    <table className = "table">
+                        <thead>
                             <tr>
                             <th>Име:</th>
                                 <td>{this.props.student.fullName}</td>
@@ -23,10 +24,12 @@ class StudentInformationComponent extends Component {
                             <th>ЕГН:</th>
                                 <td>{this.props.student.egn}</td>
                             </tr>
-                        </table>
-                    </div>
-                    <div className = "table-responsive col-md-6">         
-                        <table className = "table">
+                        </thead>                
+                    </table>
+                </div>
+                <div className = "table-responsive col-md-6">         
+                    <table className = "table">
+                        <thead>
                             <tr>
                             <th>e-mail:</th>
                                 <td>{this.props.student.email}</td>
@@ -43,9 +46,10 @@ class StudentInformationComponent extends Component {
                             <th>Семестър:</th>
                                 <td>{this.props.student.semester}</td>
                             </tr>
-                        </table>
-                    </div>
-                </div>    
+                        </thead>
+                    </table>
+                </div>
+            </div>    
         )
     }
 }

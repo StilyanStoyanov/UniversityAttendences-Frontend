@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import StudentService from '../../service/StudentService.js'
-import StudentHeader from './StudentHeader.jsx'
-import StudentDetails from '../student/StudentDetails.jsx'
-import StudentInoformationComponent from './StudentInformationComponent.jsx'
-
+import StudentMenu from './StudentMenu.jsx'
 
 class StudentComponent extends Component {
 
@@ -36,9 +33,7 @@ class StudentComponent extends Component {
     render(){
         return(
             <>
-                <StudentHeader student={this.state.student}/>
-                {/* <StudentDetails student={this.state.student}/>
-                <StudentInoformationComponent student={this.state.student}/> */}
+                <StudentMenu student={this.state.student}/>
             </>
         )
     }

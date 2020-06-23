@@ -11,18 +11,21 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import imgLogo from '../../pic/tuLogo3.png'
 import { withRouter } from "react-router-dom";
+import StudentInoformationComponent from './StudentInformationComponent.jsx'
+import StudentAttenndancesComponent from './StudentAttendances.jsx'
+import ProfessorsListComponent from '../professor/ProfessorListComponent.jsx'
 
-class StudentHeader extends Component {
+class StudentMenu extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tab : "information"
+      tab : "information",
     }
     this.executeTabs = this.executeTabs.bind(this);
-    this.func1 = this.func1.bind(this);
-    this.func2 = this.func2.bind(this);
-    this.func3 = this.func3.bind(this);
-    this.func4 = this.func4.bind(this);
+    this.studentInformation = this.studentInformation.bind(this);
+    this.studentAttendances = this.studentAttendances.bind(this);
+    this.myProfessors = this.myProfessors.bind(this);
+    this.allProfessors = this.allProfessors.bind(this);
   }
 
   componentDidCatch(){
@@ -102,65 +105,54 @@ class StudentHeader extends Component {
   }
 
   executeTabs(tab) {
-    console.log("I am inside:" + tab)
     switch(tab) {
       case "information":
-        console.log("Case 1:" + this.props.student.id)
-        return this.func1(this.props.student.id);
+        return this.studentInformation(this.props.student);
+
       case "attendances":
-        console.log("Case 2:" + tab)
-        return this.func2();
-  
+        return this.studentAttendances(this.props.student);
+
       case "myProfessors":
-        console.log("Case 3:" + tab)
-        return this.func3();
-       
+        return this.myProfessors(this.props.student);
+
       case "allProfessors":
-        console.log("Case 4:" + tab)
-        return this.func4(); 
+        return this.allProfessors(); 
+
       default:
         console.log("Default:" + tab)
     }
   }
 
-  func1 (studentId) {
-    console.log("Called 1");
+  studentInformation (student) {
     return (
       <div>
-        <h1>I am at the first function</h1>
-      </div>
-    )
-    // this.props.history.push(`/student/${studentId}/professors`)
-  }
-  
-  func2 () {
-    console.log("Called 2");
-    return (
-      <div>
-        <h1>I am at the second function</h1>
+        <StudentInoformationComponent student={student}/>
       </div>
     )
   }
   
-  func3 () {
-    console.log("Called 3");
+  studentAttendances (student) {
     return (
       <div>
-        <h1>I am at the third function</h1>
+        <StudentAttenndancesComponent student={student}/>
       </div>
     )
   }
   
-  func4 () {
-    console.log("Called 4");
+  myProfessors (student) {
     return (
-      <div>
-        <h1>I am at the fourth function</h1>
-      </div>
+      <ProfessorsListComponent student = {student}/>
+    )
+  }
+  
+  allProfessors () {
+    return (
+      <ProfessorsListComponent/>
     )
   }
   
 }
 
-// export default StudentHeader;
-export default withRouter(StudentHeader);
+
+// export default StudentMenu;
+export default withRouter(StudentMenu);
