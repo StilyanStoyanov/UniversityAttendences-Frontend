@@ -91,7 +91,7 @@ class StudentMenu extends Component {
               elevation={0}
             >
               <Tabs textColor="inherit" onChange={this.handleChange} value={this.state.tab}>
-                <Tab textColor="inherit" label="Информация" value={"information"}></Tab>/>
+                <Tab textColor="inherit" label="Информация" value={"information"}/>
                 <Tab textColor="inherit" label="Присъствия" value={"attendances"}/>
                 <Tab textColor="inherit" label="Моите преподаватели" value={"myProfessors"} />
                 <Tab textColor="inherit" label="Всички преподаватели" value={"allProfessors"}/>

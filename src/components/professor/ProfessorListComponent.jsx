@@ -87,10 +87,11 @@ class ProfessorListComponent extends Component {
                                             </div>
                                             <div className="card-content">
                                                 <h2>{professor.fullName}<small>{professor.cabinet}</small></h2>
-                                                <div className="icon-block"><a href="#">
-                                                    <i className="fa fa-facebook"></i></a><a href="#"> 
-                                                    <i className="fa fa-twitter"></i></a><a href="#"> 
-                                                    <i className="fa fa-google-plus"></i></a>
+                                                <div className="icon-block">
+                                                    <i className="fa fa-phone"></i>
+                                                    <i className="fa fa-envelope"></i>
+                                                    <p id="professorPhone">{professor.phoneNumber}</p>
+                                                    <p id="professorMail">{professor.email}</p>
                                                 </div>
                                             </div>
                                         </div>
