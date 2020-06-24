@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import ProfessorService from '../../service/ProfessorService.js'
 import equal from 'fast-deep-equal'
+import tuSofiqImage from '../../pic/tu-sofia-card.jpg'
+import professorImage from '../../pic/professorImage.jpg'
 import './ProfessorListComponent.css'
 
 class ProfessorListComponent extends Component {
@@ -70,33 +72,35 @@ class ProfessorListComponent extends Component {
             <>
             {
                 <section>
-                    <div classNameName="container">
-                        <div classNameName="row">
+                    <div className="container">
+                        <div className="row justify-content-md-center">
                             {
                                 this.state.professors.map(
-                                    professor => 
-                                    <>
-                                        <div className="col-sm-3 d-flex">
-                                            <div className="card profile-card-3">
-                                                <div className="background-block">
-                                                    <img src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="profile-sample1" className="background"/>
-                                                </div>
-                                                <div className="profile-thumb-block">
-                                                    <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="profile-image" className="profile"/>
-                                                </div>
-                                                <div className="card-content">
+                                    professor =>                                    
+                                    <div className="col-md-3 col-xs-1">
+                                        <div className="card profile-card-3">
+                                            <div className="background-block">
+                                                <img src={tuSofiqImage} alt="backgraound-card" className="background"/>
+                                            </div>
+                                            <div className="profile-thumb-block">
+                                                <img src={professorImage} alt="profile" className="profile"/>
+                                            </div>
+                                            <div className="card-content">
                                                 <h2>{professor.fullName}<small>{professor.cabinet}</small></h2>
-                                                <div className="icon-block"><a href="#"><i className="fa fa-facebook"></i></a><a href="#"> <i className="fa fa-twitter"></i></a><a href="#"> <i className="fa fa-google-plus"></i></a></div>
+                                                <div className="icon-block"><a href="#">
+                                                    <i className="fa fa-facebook"></i></a><a href="#"> 
+                                                    <i className="fa fa-twitter"></i></a><a href="#"> 
+                                                    <i className="fa fa-google-plus"></i></a>
                                                 </div>
                                             </div>
                                         </div>
-                                    </>
+                                        <p>&nbsp;</p>
+                                    </div>
                                 )
                             }
                         </div>
                     </div>
-                </section>
-                
+                </section> 
             }
             </>
         )
