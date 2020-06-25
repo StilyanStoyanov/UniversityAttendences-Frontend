@@ -12,9 +12,13 @@ section{
   overflow: hidden;
   width: 100%;
   text-align: center;
-  height: 368px;
   border: none !important;
 }
+
+.profile-card-3 .profile-thumb-block{
+  position: relative;
+}
+
 .profile-card-3 .background-block {
   float: left;
   width: 100%;
@@ -45,8 +49,17 @@ section{
 
 @media screen and (min-width: 768px){
   .profile-card-3 .card-content h2 {
-    font-size:1.8vw;
+    font-size: 1.8vw;
   }  
+
+  .card-content small{
+    font-size: 1.4vw 
+  } 
+
+  #professorPhone,
+  #professorMail {
+    font-size: 1.4vw 
+  }
 }
 
 .profile-card-3 .card-content::before {
@@ -80,18 +93,17 @@ section{
 }
 .profile-card-3 h2 small {
   display: block;
-  font-size: 15px;
   margin-top:10px;
 }
 .profile-card-3 i {
   display: inline-block;
-  font-size: 16px;
+  font-size: 20px;
   color: #232323;
   text-align: center;
   border: 1px solid #232323;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
   border-radius: 50%;
   margin:0 5px;
 }
@@ -114,10 +126,22 @@ section{
   display: none;
 }
 
-.fa-phone:hover ~ #professorPhone {
+.buttonPhone:hover ~ #professorPhone {
   display: block;
 }
 
-.fa-envelope:hover ~ #professorMail {
+.buttonMail:hover ~ #professorMail {
   display: block;
+}
+
+.buttonPhone{
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.buttonMail{
+  padding: 0;
+  border: none;
+  background: none;
 }
