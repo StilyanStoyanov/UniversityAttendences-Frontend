@@ -10,10 +10,13 @@ class ProfessorListComponent extends Component {
     constructor(props){
         super(props)
         this.state = {
-            professors: []
+            professors: [],
+            inputValue: ''
         }
         this.getMyProfessors = this.getMyProfessors.bind(this);
         this.getAllProfessors = this.getAllProfessors.bind(this);
+        this.searchProfessors = this.searchProfessors.bind(this);
+        this.updateInputValue = this.updateInputValue.bind(this);
     }
 
     componentDidMount(){
@@ -24,7 +27,7 @@ class ProfessorListComponent extends Component {
         if(!equal(this.props.student, prevProps.student))        {
           this.refreshProfessors();
         }
-      } 
+    } 
 
     refreshProfessors() {
         if(this.props.student != null){
@@ -59,8 +62,27 @@ class ProfessorListComponent extends Component {
         )
         })
         .catch(
-        error => console.log(error.response)
+         error => console.log(error.response)
         )
+    }
+
+    updateInputValue(evt) {
+        this.setState({
+          inputValue: evt.target.value
+        });
+    }
+
+    searchProfessors(){
+        var inputField = this.state.inputValue
+        if(inputField === ""){
+            this.refreshProfessors()
+        }
+        var searchedProfessors = this.state.professors.filter(function(professor){
+            return professor.fullName.toLowerCase().includes(inputField.toLowerCase())
+        })
+        this.setState({
+            professors: searchedProfessors
+        })
     }
 
     render(){
@@ -69,11 +91,29 @@ class ProfessorListComponent extends Component {
             {
                 <section>
                     <div className="container">
+                        <div className="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+                            <div className="input-group">
+                                <input type="search" 
+                                onChange={evt => this.updateInputValue(evt)} 
+                                onKeyPress={event => {
+                                    if (event.key === 'Enter') {
+                                        this.searchProfessors()
+                                    }
+                                }} 
+                                placeholder="Потърси в списъкът с преподаватели" 
+                                aria-describedby="button-addon1" 
+                                className="form-control border-0 bg-light"/>
+                                <div className="input-group-append">
+                                    <button id="button-addon1" type="submit" onClick={this.searchProfessors} className="btn btn-link text-primary"><i className="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <p>&nbsp;</p>
                         <div className="row justify-content-md-center">
                             {
                                 this.state.professors.map(
                                     professor =>      
-                                    <div className="col-md-3 col-xs-1">
+                                    <div className="col-md-3 col-xs-1" key = {professor.id}>
                                         <div className="card profile-card-3">
                                             <div className="background-block">
                                                 <img src={tuSofiqImage} alt="backgraound-card" className="background"/>
