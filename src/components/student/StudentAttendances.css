@@ -1,0 +1,49 @@
+.attendances {
+    text-align: center;
+    background-color: #efefef;
+    font-style:italic;
+    font-size: 1.2vw;
+    font-weight: 600;
+    padding: 15px;
+    border-radius:20px;
+    border: 1.5px solid;
+    border-color: #2B7CD9;
+    margin-top: 2%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+@media only screen and (max-width: 850px){
+    .attendances{
+        font-size: 8px;
+    }
+
+    .attendances button{
+        font-size: 8px;
+    }
+}
+
+#expanded-row {
+    /* border: 2px solid;
+    border-color: #2B7CD9;
+    border-radius:20px; */
+    margin-top: 2%;
+    /* background-color: #2B7CD9; */
+}
+
+#expanded-row .innerKey{
+    font-size: 1.2vw;
+}
+
+#expanded-row .innerValue{
+    font-size: 1.2vw;
+}
+
+.fa-circle-o
+{
+    color:red;
+}
+
+.fa-check{
+    color: green;
+}
