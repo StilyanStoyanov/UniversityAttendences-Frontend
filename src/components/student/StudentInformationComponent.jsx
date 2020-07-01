@@ -52,6 +52,14 @@ class StudentInformationComponent extends Component {
                     </div>
                     <div className="row">
                         <div className="col-md-6">
+                            <label>Факултет:</label>
+                        </div>
+                        <div className="col-md-6">
+                            <p>{this.props.student.specialtyFacultyName}</p>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-6">
                             <label>Поток</label>
                         </div>
                         <div className="col-md-6">
