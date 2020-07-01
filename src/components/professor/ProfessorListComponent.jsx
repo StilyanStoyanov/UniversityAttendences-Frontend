@@ -48,7 +48,7 @@ class ProfessorListComponent extends Component {
         )
         })
         .catch(
-        error => console.log(error.response)
+            error => console.log(error.response)
         )
     }
 
@@ -62,7 +62,7 @@ class ProfessorListComponent extends Component {
         )
         })
         .catch(
-         error => console.log(error.response)
+            error => console.log(error.response)
         )
     }
 

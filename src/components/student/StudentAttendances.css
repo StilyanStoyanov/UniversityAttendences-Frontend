@@ -47,3 +47,12 @@
 .fa-check{
     color: green;
 }
+
+.dropdown button{
+    margin-top: 2%;
+    background-color: #2B7CD9;
+}
+
+.dropdown-menu button{
+    background-color: white;
+}

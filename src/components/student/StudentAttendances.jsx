@@ -8,18 +8,19 @@ class StudentAttendances extends Component {
         super(props)
 
         this.state = {
-            attendances: []
+            attendances: [],
+            selectedSemester: this.props.student.semester
         }
     
-        this.handleClick = this.handleClick.bind(this);
+        this.showAttendances = this.showAttendances.bind(this);
     }
     
     componentDidMount(){
-        this.refreshAttendances();
+        this.refreshAttendances(this.props.student.semester);
     }
 
-    refreshAttendances() {
-        AttendanceService.getStudentAttendances(this.props.student.id, this.props.student.semester)
+    refreshAttendances(semester) {
+        AttendanceService.getStudentAttendances(this.props.student.id, semester)
         .then(response => 
             {
                 this.setState({
@@ -31,7 +32,7 @@ class StudentAttendances extends Component {
         )
     }
 
-    handleClick(attendance) {
+    showAttendances(attendance) {
         let updatedList = this.state.attendances.map(obj => {
            if(obj.id === attendance.id) {
              return Object.assign({}, obj, {
@@ -69,10 +70,47 @@ class StudentAttendances extends Component {
             </div>
         )
     }
+
+    changeSemester (value) {
+        this.refreshAttendances(value)
+        this.setState(
+            {
+                selectedSemester: value
+            }
+        )
+    }
+
+    createDropDownList(value) {
+        let items = [];         
+        for (let i = 1; i <= value; i++) {             
+            items.push(<button 
+                className="dropdown-item" 
+                type="button" 
+                value='asd' 
+                key = {i} 
+                onClick={this.changeSemester.bind(this, i)}>Семестър {i}</button>);   
+        }
+        return items;
+    }
     
     render(){
         return(
             <>
+            <div className="dropdown">
+                <button 
+                    className="btn btn-primary dropdown-toggle" 
+                    type="button" 
+                    id="dropdownMenu2" 
+                    data-toggle="dropdown" 
+                    aria-haspopup="true" 
+                    aria-expanded="false"
+                >
+                Семестър {this.state.selectedSemester}
+                </button>
+                <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    {this.createDropDownList(this.props.student.semester)}
+                </div>
+            </div>
             {
                 this.state.attendances.map(
                     attendance => 
@@ -91,7 +129,7 @@ class StudentAttendances extends Component {
                                 <button 
                                 type="button" 
                                 className="btn btn-primary"
-                                onClick={() => this.handleClick(attendance)}
+                                onClick={() => this.showAttendances(attendance)}
                                 >Провери присъствия</button>
                             </div>
                             {!attendance.hidden && this.renderAttendances(attendance)}
@@ -99,6 +137,7 @@ class StudentAttendances extends Component {
                     </div>
                 )               
             }
+            
             </>
         )
     }
