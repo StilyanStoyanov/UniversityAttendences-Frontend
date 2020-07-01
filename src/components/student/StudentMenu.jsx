@@ -72,12 +72,12 @@ class StudentMenu extends Component {
                     </Typography>
                   </Grid>
                   <Grid item>
-                    <Button  variant="outlined" color="inherit" size="small">
+                    <Button href="https://student.tu-sofia.bg/" target="_blank" variant="outlined" color="inherit" size="small">
                       Моето УИСС
                     </Button>
                   </Grid>
                   <Grid item>
-                    <Button  variant="outlined" color="inherit" size="small">
+                    <Button href="https://tu-sofia.bg/" target="_blank" variant="outlined" color="inherit" size="small">
                       ТУ-София
                     </Button>
                   </Grid>
