@@ -1,12 +1,26 @@
-.row{
-    padding-top: 1%;
-    padding-left: 5%;
-    padding-right: 5%;
+.search-bar-program {
+    padding-bottom: 1%;
+    background-color: #2B7CD9;
+    border-bottom-left-radius:20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
 }
 
 #button-addon1{
     padding-top: 2.5%;
 }
+
 .fa-search{
     font-size: 30px;
+    color: white;
+}
+
+.fa-search:hover{
+    color:#0062cc
+}
+
+.filter {
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
 }

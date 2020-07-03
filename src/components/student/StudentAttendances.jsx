@@ -86,7 +86,7 @@ class StudentAttendances extends Component {
             items.push(<button 
                 className="dropdown-item" 
                 type="button" 
-                value='asd' 
+                value={i} 
                 key = {i} 
                 onClick={this.changeSemester.bind(this, i)}>Семестър {i}</button>);   
         }

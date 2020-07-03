@@ -9,12 +9,12 @@ class ProfessorService {
         return axios.get(`http://localhost:8081/professor?specialtyId=${specialtyId}&semester=${semester}`)
     }
 
-    getAllProfessors(specialtyId, semester){
+    getAllProfessors(){
         return axios.get('http://localhost:8081/professor/all')
     }
 
     getProgram(id, specialtyId, semester){
-        return axios.get(`http://localhost:8081/professor/program/${id}?specialtyId=${specialtyId}&semester=${semester}`)
+        return axios.get(`http://localhost:8081/professor/${id}/program?specialtyId=${specialtyId}&semester=${semester}`)
     }
 }
 
