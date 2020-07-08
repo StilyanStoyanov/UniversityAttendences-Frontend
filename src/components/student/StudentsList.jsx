@@ -49,7 +49,12 @@ class StudentsList extends Component {
                 AttendanceService.getStudentAttendancesBySubject(student.id, student.semester, this.props.subject)
                 .then(
                     response =>  {
-                        const record = {id: student.id, name: student.fullName, attendances: response.data.attendances}
+                        const record = {
+                            id: student.id,
+                            facultyNumber: student.facultyNumber,
+                            name: student.fullName,
+                            attendances: response.data.attendances
+                        }
                         studentsAttednacesArray.push(record)
                     }
                 )  
@@ -89,6 +94,7 @@ class StudentsList extends Component {
                     this.state.studentsAttendances.map((record) =>
                         <TableRow key={record.id}>
                             <TableCell component="th" scope="row">{record.name}</TableCell>
+                            <TableCell component="left">{record.facultyNumber}</TableCell>
                             {
                                 Object.entries(record.attendances).map(
                                 ([key, value]) => 
@@ -112,7 +118,8 @@ class StudentsList extends Component {
                     <Table className="table" aria-label="customized table">
                         <TableHead>
                             <TableRow>
-                                <TableCell key = {0}>Студент</TableCell>
+                                <TableCell >Студент</TableCell>
+                                <TableCell >Фак №</TableCell>
                                 {this.renderColumns()}
                             </TableRow>
                         </TableHead>
