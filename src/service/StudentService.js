@@ -9,6 +9,10 @@ class StudentService {
     getGroups(specialtyId, semester){
         return axios.get(`http://localhost:8081/student/group?specialtyId=${specialtyId}&semester=${semester}`)
     }
+
+    getStudentsBySpecialtyGroupAndSemester(specialtyId, group, semester){
+        return axios.get(`http://localhost:8081/student/all/filter?specialtyId=${specialtyId}&group=${group}&semester=${semester}`)
+    }
 }
 
 export default new StudentService()

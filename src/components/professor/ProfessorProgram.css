@@ -10,12 +10,12 @@
     padding-top: 2.5%;
 }
 
-.fa-search{
+#search-button-professor{
     font-size: 30px;
     color: white;
 }
 
-.fa-search:hover{
+#search-button-professor:hover{
     color:#0062cc
 }
 

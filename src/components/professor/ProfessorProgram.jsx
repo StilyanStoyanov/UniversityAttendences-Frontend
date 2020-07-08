@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import SpecialtyService from '../../service/SpecialtyService.js'
 import ProfessorService from '../../service/ProfessorService.js'
 import './ProfessorProgram.css'
-import './ProfessorProgram.css'
 import StudentService from '../../service/StudentService.js'
+import StudentsList from '../student/StudentsList.jsx'
 
 class ProfessorProgram extends Component {
 
@@ -15,6 +15,7 @@ class ProfessorProgram extends Component {
             program: [],
             specialties: [],
             groups: [],
+            students: [],
             selectedSpecialty: '',
             selectedSemester: 0,
             selectedSubject: '',
@@ -26,6 +27,7 @@ class ProfessorProgram extends Component {
         this.changeSelectedSubject = this.changeSelectedSubject.bind(this);
         this.changeSelectedGroup = this.changeSelectedGroup.bind(this);
         this.getProgram = this.getProgram.bind(this)
+        this.getStudents = this.getStudents.bind(this)
     }
     
     componentDidMount(){
@@ -58,6 +60,7 @@ class ProfessorProgram extends Component {
             selectedSpecialty: e.target.value,
             groups: [],
             program: [],
+            students: [],
             selectedSemester: 0,
             selectedSubject: '',
             selectedGroup: ''
@@ -74,6 +77,7 @@ class ProfessorProgram extends Component {
             selectedSemester: e.target.value,
             groups: [],
             program: [],
+            students: [],
             selectedSubject: '',
             selectedGroup: ''
         })
@@ -84,6 +88,7 @@ class ProfessorProgram extends Component {
         this.setState({
             selectedSubject: e.target.value,
             groups: [],
+            students: [],
             selectedGroup: ''
         })
 
@@ -94,8 +99,8 @@ class ProfessorProgram extends Component {
     }
 
     changeSelectedGroup(e){
-        console.log("I am here at the selected group method man")
         this.setState({
+            students: [],
             selectedGroup: e.target.value
         })
     }
@@ -129,6 +134,21 @@ class ProfessorProgram extends Component {
                 })
                 console.log(error.response.message)
             } 
+        )
+    }
+
+    
+    getStudents(){
+        StudentService.getStudentsBySpecialtyGroupAndSemester(
+            this.state.selectedSpecialty, this.state.selectedGroup, this.state.selectedSemester)
+        .then(response => {
+                this.setState({
+                    students: response.data
+                }) 
+            }
+        )
+        .catch(
+            error => console.log(error.response.message)
         )
     }
 
@@ -168,7 +188,7 @@ class ProfessorProgram extends Component {
                                 {
                                     this.state.program.map(
                                         program => 
-                                            <option key = {program.id} value={program.id}>{program.subjectName}</option>
+                                            <option key = {program.id} value={program.subjectId}>{program.subjectName}</option>
                                         )
                                 }
                             </select>
@@ -185,11 +205,18 @@ class ProfessorProgram extends Component {
                                 }
                             </select>
                         </div>
-                        <button id="button-addon1" type="submit" className="btn btn-link text-primary" onClick={this.getProgram}>
-                            <i className="fa fa-search"></i>
+                        <button id="button-addon1" type="submit" className="btn btn-link text-primary" onClick={this.getStudents}>
+                            <i className="fa fa-search" id="search-button-professor"></i>
                         </button>
                     </div>
                 </div>
+                {
+                    this.state.students.length > 0 && 
+                    <StudentsList 
+                        students = {this.state.students} 
+                        subject = {this.state.selectedSubject}
+                    />
+                }
             </>
         )
     }
