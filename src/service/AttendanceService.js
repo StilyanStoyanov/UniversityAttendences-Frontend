@@ -10,8 +10,6 @@ class AttendanceService {
     }
 
     updateAttendances(request){
-        console.log("Request: ")
-        console.log(request)
         return axios.put('http://localhost:8081/attendance', request)
     }
 }

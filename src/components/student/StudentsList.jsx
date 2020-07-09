@@ -40,11 +40,6 @@ class StudentsList extends Component {
         this.prepareStudentsAttendances(this.props.students)
     }
 
-    // componentWillUpdate(){
-    //     this.openDialog();
-    //     this.closeDialog();
-    // }
-
     refreshSubjectInformation(){
         SubjectService.getSubjectById(this.props.subject)
         .then(response => {
@@ -166,7 +161,6 @@ class StudentsList extends Component {
             }
         )
 
-        console.log("Count of updated records: " + this.state.countOfUpdatedRecords)
         this.setState({
             hasChanged: false,
             openDialog: false
@@ -180,7 +174,6 @@ class StudentsList extends Component {
     }
 
     openDialog(){
-        console.log("Clicked: openDialog" )
         this.setState({
             openDialog: true
         })
