@@ -8,6 +8,12 @@ class AttendanceService {
     getStudentAttendancesBySubject(studentId, semester, subject){
         return axios.get(`http://localhost:8081/attendance/filter?studentId=${studentId}&semester=${semester}&subjectId=${subject}`)
     }
+
+    updateAttendances(request){
+        console.log("Request: ")
+        console.log(request)
+        return axios.put('http://localhost:8081/attendance', request)
+    }
 }
 
 export default new AttendanceService()
