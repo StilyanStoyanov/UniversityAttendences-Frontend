@@ -50,7 +50,7 @@ class StudentMenu extends Component {
                   <Grid item xs />
                   <Grid item>
                     <Tooltip title="Изход" href="/login">
-                      <IconButton color="inherit" size = 'medium'>
+                      <IconButton color="inherit" onClick={() => localStorage.removeItem("authorization")} size = 'medium'>
                         <DirectionsRunIcon/>
                       </IconButton>
                     </Tooltip>

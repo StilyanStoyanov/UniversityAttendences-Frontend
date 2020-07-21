@@ -74,12 +74,17 @@ class LoginComponent extends Component{
         .then(response => 
             {
                 let userId = response.data.id
-                if(response.data.role === "STUDENT"){
-                    this.props.history.push(`/student/${userId}`)
-                }
-                else {
-                    this.props.history.push(`/professor/${userId}`)
-                }
+                localStorage.setItem("authorization", response.data.token);
+
+                setTimeout(() => {
+                    if(response.data.role === "STUDENT"){
+                        this.props.history.push(`/student/${userId}`)
+                    }
+                    else {
+                        this.props.history.push(`/professor/${userId}`)
+                    }
+                }, 1000);
+
             }
         )
         .catch(error => {

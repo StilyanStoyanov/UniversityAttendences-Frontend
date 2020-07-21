@@ -43,7 +43,7 @@ class ProfessorProgram extends Component {
                 })
             })
         .catch(
-            error => console.log(error.response.message)
+            error => alert(error.response.data.message)
         )
     }
 
@@ -116,7 +116,7 @@ class ProfessorProgram extends Component {
             }
         )
         .catch(
-            error => console.log(error.response.message)   
+            error => alert(error.response.data.message) 
         )
     }
 
@@ -132,8 +132,7 @@ class ProfessorProgram extends Component {
                 this.setState({
                     program: []
                 })
-                console.log(error.response.message)
-            } 
+                alert(error.response.data.message)            } 
         )
     }
 
@@ -148,7 +147,7 @@ class ProfessorProgram extends Component {
             }
         )
         .catch(
-            error => console.log(error.response.message)
+            error => alert(error.response.data.message)
         )
     }
 

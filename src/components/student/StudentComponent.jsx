@@ -26,7 +26,7 @@ class StudentComponent extends Component {
                 })
             )
         .catch(
-            error => console.log(error.response.message)
+            error => this.props.history.push({pathname: '/error', message: error.response.data.message})
         )
     }
     

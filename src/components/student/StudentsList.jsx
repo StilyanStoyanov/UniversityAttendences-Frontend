@@ -50,7 +50,7 @@ class StudentsList extends Component {
             )
         })
         .catch(
-            error => console.log(error.response)
+            error => this.props.history.push({pathname: '/error', message: error.response.data.message})
         )
     }
         
@@ -73,7 +73,7 @@ class StudentsList extends Component {
                     }
                 )  
                 .catch(
-                    error => console.log(error.response.message)
+                    error => this.props.history.push({pathname: '/error', message: error.response.data.message})
                 )
         )
         setTimeout(() => {
@@ -156,10 +156,12 @@ class StudentsList extends Component {
                 }
                 AttendanceService.updateAttendances(request)
                 .catch(
-                    error => console.log(error.response)
+                    error => this.props.history.push({pathname: '/error', message: error.response.data.message})
                 )
             }
         )
+
+        setTimeout(()=> alert("Промение са направени успешно!"),1000)
 
         this.setState({
             hasChanged: false,

@@ -48,7 +48,7 @@ class ProfessorListComponent extends Component {
         )
         })
         .catch(
-            error => console.log(error.response)
+            error => this.props.history.push({pathname: '/error', message: error.response.data.message})
         )
     }
 
@@ -62,7 +62,7 @@ class ProfessorListComponent extends Component {
         )
         })
         .catch(
-            error => console.log(error.response)
+            error => this.props.history.push({pathname: '/error', message: error.response.data.message})
         )
     }
 
