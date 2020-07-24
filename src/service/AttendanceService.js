@@ -2,15 +2,15 @@ import axios from "axios"
 
 class AttendanceService {
     getStudentAttendances(studentId, semester){
-        return axios.get(`http://localhost:8081/attendance?studentId=${studentId}&semester=${semester}`)
+        return axios.get(`${process.env.REACT_APP_BACKEND_SERVICE}/attendance?studentId=${studentId}&semester=${semester}`)
     }
 
     getStudentAttendancesBySubject(studentId, semester, subject){
-        return axios.get(`http://localhost:8081/attendance/filter?studentId=${studentId}&semester=${semester}&subjectId=${subject}`)
+        return axios.get(`${process.env.REACT_APP_BACKEND_SERVICE}/attendance/filter?studentId=${studentId}&semester=${semester}&subjectId=${subject}`)
     }
 
     updateAttendances(request){
-        return axios.put('http://localhost:8081/attendance', request)
+        return axios.put(`${process.env.REACT_APP_BACKEND_SERVICE}/attendance`, request)
     }
 }
 

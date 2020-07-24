@@ -3,7 +3,7 @@ import axios from "axios"
 class SubjectService {
     
     getSubjectById(id){
-        return axios.get(`http://localhost:8081/subject/${id}`)
+        return axios.get(`${process.env.REACT_APP_BACKEND_SERVICE}/subject/${id}`)
     }
 }
 
