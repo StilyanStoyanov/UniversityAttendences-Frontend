@@ -81,7 +81,7 @@ class StudentsList extends Component {
                 studentsAttendances: studentsAttednacesArray,
                 loading: false
             })
-        }, 300);
+        }, 1000);
     }
 
     renderColumns(){

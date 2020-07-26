@@ -59,9 +59,9 @@ class StudentAttendances extends Component {
                 {
                     Object.entries(attendance.attendances).map(
                     ([key, value]) => 
-                        <div className="col-1" key={key}>
-                            <p className="innerKey">У-{key}</p>
-                            <p className="innerValue">  
+                        <div className="col-2"  key={key}>
+                            <p className="innerKey" >У-{key}</p>
+                            <p className="innerValue" >  
                                 <i className={`fa fa-${iconsMap[{value}.value]}`} aria-hidden="true"></i>
                             </p>
                         </div>

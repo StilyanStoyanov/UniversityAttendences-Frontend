@@ -4,16 +4,20 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
+import { ThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import Toolbar from '@material-ui/core/Toolbar';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import imgLogo from '../../pic/tuLogo3.png'
 import { withRouter } from "react-router-dom";
 import StudentInoformationComponent from './StudentInformationComponent.jsx'
 import StudentAttenndancesComponent from './StudentAttendances.jsx'
 import ProfessorsListComponent from '../professor/ProfessorListComponent.jsx'
+import './StudentMenu.css'
 
 class StudentMenu extends Component {
   constructor(props) {
@@ -41,16 +45,20 @@ class StudentMenu extends Component {
   };
 
   render(){
+      let theme = createMuiTheme();
+      theme = responsiveFontSizes(theme);
+
       return (
           <>
-            <AppBar style={{backgroundColor: '#2B7CD9'}} position="sticky" elevation={12}>
+            <CssBaseline />
+            <AppBar style={{backgroundColor: '#2B7CD9'}} position="sticky" elevation={4}>
               <Toolbar>
-                <img src = {imgLogo} alt = "logo" />
+                <img className="tuLogoImg" src = {imgLogo} alt = "logo" />
                 <Grid container spacing={1} alignItems="center">
                   <Grid item xs />
                   <Grid item>
                     <Tooltip title="Изход" href="/login">
-                      <IconButton color="inherit" onClick={() => localStorage.removeItem("authorization")} size = 'medium'>
+                      <IconButton style={{color: "#08349c"}} onClick={() => localStorage.removeItem("authorization")} size = 'medium'>
                         <DirectionsRunIcon/>
                       </IconButton>
                     </Tooltip>
@@ -67,20 +75,20 @@ class StudentMenu extends Component {
               <Toolbar>
                 <Grid container alignItems="center" spacing={1}>
                   <Grid item xs>
-                    <Typography color="inherit" variant="h5" component="h1">
-                      Университетска система за проверка на присъствия
-                    </Typography>
+                    <ThemeProvider theme={theme}>
+                      <Typography style={{color: "white",  fontWeight: "normal"}} variant="h5" component="h1">
+                        Университетска портал за вписане на присъствия
+                      </Typography>
+                    </ThemeProvider>
                   </Grid>
-                  <Grid item>
+                  <div class="btn-group mr-2 " role="group" aria-label="button group">
                     <Button href="https://student.tu-sofia.bg/" target="_blank" variant="outlined" color="inherit" size="small">
                       Моето УИСС
                     </Button>
-                  </Grid>
-                  <Grid item>
                     <Button href="https://tu-sofia.bg/" target="_blank" variant="outlined" color="inherit" size="small">
                       ТУ-София
                     </Button>
-                  </Grid>
+                  </div>
                 </Grid>
               </Toolbar>
             </AppBar>
@@ -90,7 +98,7 @@ class StudentMenu extends Component {
               position="static"
               elevation={0}
             >
-              <Tabs textColor="inherit" onChange={this.handleChange} value={this.state.tab}>
+              <Tabs TabIndicatorProps={{style: {background:'#08349c'}}} variant="scrollable" scrollButtons="auto" textColor="inherit" onChange={this.handleChange} value={this.state.tab}>
                 <Tab textColor="inherit" label="Информация" value={"information"}/>
                 <Tab textColor="inherit" label="Присъствия" value={"attendances"}/>
                 <Tab textColor="inherit" label="Моите преподаватели" value={"myProfessors"} />

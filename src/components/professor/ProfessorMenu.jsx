@@ -8,10 +8,13 @@ import Tabs from '@material-ui/core/Tabs';
 import Toolbar from '@material-ui/core/Toolbar';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
+import { ThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import imgLogo from '../../pic/tuLogo3.png'
 import { withRouter } from "react-router-dom";
 import ProfessorInoformationComponent from './ProfessorInformationComponent.jsx'
 import ProfessorProgram from './ProfessorProgram.jsx'
+import './ProfessorMenu.css'
 
 class ProfessorMenu extends Component {
   constructor(props) {
@@ -37,16 +40,20 @@ class ProfessorMenu extends Component {
   };
 
   render(){
+
+      let theme = createMuiTheme();
+      theme = responsiveFontSizes(theme);
+
       return (
           <>
-            <AppBar style={{backgroundColor: '#2B7CD9'}} position="sticky" elevation={12}>
+            <AppBar style={{backgroundColor: '#2B7CD9'}} position="sticky" elevation={4}>
               <Toolbar>
-                <img src = {imgLogo} alt = "logo" />
+                <img className="tuLogoImg" src = {imgLogo} alt = "logo" />
                 <Grid container spacing={1} alignItems="center">
                   <Grid item xs />
                   <Grid item>
                     <Tooltip title="Изход" href="/login">
-                      <IconButton color="inherit" onClick={() => localStorage.removeItem("authorization")} size = 'medium'>
+                      <IconButton style={{color: "#08349c"}} onClick={() => localStorage.removeItem("authorization")} size = 'medium'>
                         <DirectionsRunIcon/>
                       </IconButton>
                     </Tooltip>
@@ -63,9 +70,11 @@ class ProfessorMenu extends Component {
               <Toolbar>
                 <Grid container alignItems="center" spacing={1}>
                   <Grid item xs>
-                    <Typography color="inherit" variant="h5" component="h1">
-                      Университетска портал за вписане на присъствия
-                    </Typography>
+                    <ThemeProvider theme={theme}>
+                      <Typography style={{color: "white",  fontWeight: "normal"}} variant="h5" component="h1">
+                        Университетска портал за вписане на присъствия
+                      </Typography>
+                    </ThemeProvider>
                   </Grid>
                 </Grid>
               </Toolbar>
@@ -76,7 +85,7 @@ class ProfessorMenu extends Component {
               position="static"
               elevation={0}
             >
-              <Tabs textColor="inherit" onChange={this.handleChange} value={this.state.tab}>
+              <Tabs TabIndicatorProps={{style: {background:'#08349c'}}} variant="scrollable" scrollButtons="auto" textColor="inherit" onChange={this.handleChange} value={this.state.tab}>
                 <Tab textColor="inherit" label="Информация" value={"information"}/>
                 <Tab textColor="inherit" label="Програма" value={"program"}/>
               </Tabs>

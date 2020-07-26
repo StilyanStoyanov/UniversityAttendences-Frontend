@@ -15,11 +15,13 @@
 
 @media only screen and (max-width: 850px){
     .attendances{
-        font-size: 8px;
+        font-size: 7px;
+        margin-left: 2%;
+        margin-right: 2%;
     }
 
     .attendances button{
-        font-size: 8px;
+        font-size: 7px;
     }
 }
 

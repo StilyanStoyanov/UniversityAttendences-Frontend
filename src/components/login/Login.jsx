@@ -54,7 +54,7 @@ class LoginComponent extends Component{
                                     <fieldset>
                                         <Field type="password" name ="password" placeholder="password"></Field>
                                     </fieldset>
-                                    <input type="submit" value = "Log in"/>
+                                    <input form-control input-lg type="submit" value = "Log in"/>
                                 </Form>
                             )
                         }

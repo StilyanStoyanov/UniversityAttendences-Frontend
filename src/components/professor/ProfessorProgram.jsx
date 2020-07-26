@@ -181,7 +181,7 @@ class ProfessorProgram extends Component {
                             </select>
                         </div>
                         <div className="col-3">
-                            <label className="filter">Предмет</label>
+                            <label className="filter" >Предмет</label>
                             <select className="form-control" onChange={this.changeSelectedSubject} defaultValue={'default'}>
                                 <option value="default" disabled >Избери:</option>
                                 {
