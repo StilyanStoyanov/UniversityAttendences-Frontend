@@ -25,7 +25,6 @@ class LoginComponent extends Component{
         let {username, password} = this.state;
 
         return(
-                       
             <div className="wrapper">
                 <div id="formContent">
                     <img id="TULogo" src={logo} alt='Logo of the Technical University'/>
@@ -49,10 +48,10 @@ class LoginComponent extends Component{
                                         <div className = "alert alert-danger"> {this.state.exception}</div>
                                     }
                                     <fieldset>
-                                        <Field type="text" name ="username" placeholder="login"></Field>
+                                        <Field type="text" name ="username" placeholder="потребителско име"></Field>
                                     </fieldset>
                                     <fieldset>
-                                        <Field type="password" name ="password" placeholder="password"></Field>
+                                        <Field type="password" name ="password" placeholder="парола"></Field>
                                     </fieldset>
                                     <input form-control input-lg type="submit" value = "Log in"/>
                                 </Form>
@@ -65,6 +64,7 @@ class LoginComponent extends Component{
     }
 
     logUser(values){
+        localStorage.removeItem("authorization")
         AuthenticationService.logInRequest(
             {
                 username: values.username,
